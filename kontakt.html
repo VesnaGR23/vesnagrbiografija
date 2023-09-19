@@ -1,0 +1,156 @@
+<html>	
+<head>
+<meta http-equiv="Content Type" content="text/html; charset="UTF-8"/>
+<title>KONTAKT </title>
+</head>
+<body>
+<body style = "background-color: FAEBD7">
+<body class="home blog custom-background customizer-styles-applied single-author chrome highlander-enabled highlander-light">
+<div id="header">
+		<div class="container">
+			<class style ="font-family:calibri; color:D2691E; font-size:18px; text-align:center"> 
+			<div id="logo">
+		<h1>
+<a href="https://vesnagr23.github.io/vesnabiografija.github.io/home.html"> Moja biografija - Vesna Gunjić Radetić</a>
+		</h1>
+	<div class="desc">
+		WEB dizajn – Seminarski rad		
+		</div><!-- .desc -->
+		</div><!-- #logo -->
+		</div><!-- .container -->
+	</div><!-- #header -->
+
+
+	<br><br><br>
+<div id="text">
+		<div class="container">
+				<h2><em> 
+<h3 style ="font-family:calibri; color:D2691E; font-size:24px; text-align:justify">
+<div id="header">
+		<div class="container">
+			<div id="logo">
+		<h3> Kontakt </h3>
+		</div><!-- #logo -->
+		</div><!-- .container -->
+	</div><!-- #header -->
+<br><br>
+	<img src="https://vesnagr23.github.io/vesnabiografija.github.io/images/posao.jpg" alt="Posao" width="500" height="300">
+	<br>  <br>
+<br><br> 
+<form id="contactForm" action="" method="POST">
+  <label for="name">Ime:</label>
+  <input type="text" id="name" name="name" required><br><br> 
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required><br><br>
+  
+  <label for="message">Poruka:</label>
+  <textarea id="message" name="message" required></textarea><br><br>
+  
+  <button type="submit">Pošalji</button>
+</form>
+
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Spriječava podrazumijevano ponašanje obrasca
+
+    // Dohvaćanje vrijednosti polja obrasca
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+    // Ovdje možete izvršiti dodatne provjere i validacije podataka
+
+    // Slanje podataka putem AJAX-a
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'obrada.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+      // Ovdje možete manipulirati odgovorom od servera
+      if (xhr.status === 200) {
+        alert('Poruka je uspješno poslana!');
+        // Ovdje možete izvršiti daljnje radnje nakon uspješnog slanja obrasca
+      } else {
+        alert('Došlo je do pogreške prilikom slanja poruke.');
+      }
+    };
+    xhr.send('name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&message=' + encodeURIComponent(message));
+  });
+</script>
+
+<?php
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $message = $_POST['message'];
+
+  // Ovdje možete izvršiti dodatnu logiku za obradu podataka i slanje emaila
+
+  // Primjer odgovora
+  if (mail('primjer@email.com', 'Novi kontakt', $message)) {
+    http_response_code(200); // Uspješan odgovor
+  } else {
+    http_response_code(500); // Pogreška prilikom slanja
+  }
+?>
+
+<br><br><br>
+    <title>Sat</title>
+    <style>
+        /* Stilizacija sata  */
+        #sat {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+    <div id="sat">Trenutno vreme će biti prikazano ovde</div>
+
+    <script>
+        // JavaScript kôd će biti dodat u nastavku
+    </script>
+
+
+<script>
+    // Funkcija koja će ažurirati sat na stranici
+    function azurirajSat() {
+        var sada = new Date();
+        var sat = sada.getHours();
+        var minut = sada.getMinutes();
+        var sekund = sada.getSeconds();
+
+        // Dodavanje nula ispred brojeva sa jednom cifrom
+        if (sat < 10) {
+            sat = "0" + sat;
+        }
+        if (minut < 10) {
+            minut = "0" + minut;
+        }
+        if (sekund < 10) {
+            sekund = "0" + sekund;
+        }
+
+        // Formatiranje vremena i prikaz na stranici
+        var vreme = sat + ":" + minut + ":" + sekund;
+        document.getElementById('sat').innerText = vreme;
+    }
+
+    // Ažuriranje sata svake sekunde
+    setInterval(azurirajSat, 1000);
+
+    // Opciono: Poziv funkcije odmah kako bi se sat odmah prikazao na stranici
+    azurirajSat();
+</script>
+<br><br><br>
+
+<p align = "center"><a href="https://vesnagr23.github.io/vesnabiografija.github.io/home.html">Početna</a></p>
+</div>
+<hr>
+<div id="footer">
+<p align="center"> <img src="https://vesnagr23.github.io/vesnabiografija.github.io/images/logo.jpg" alt="logo" width="200" height="100"></p>
+</div><!-- #footer -->
+
+</body>
+</html>
+

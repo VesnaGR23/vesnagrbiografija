@@ -1,0 +1,16 @@
+# Omogući mod rewrite
+RewriteEngine On
+
+# Preusmjeravanje na HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Preusmjeravanje sa www na bez www
+RewriteCond %{HTTP_HOST} ^www\.example\.com [NC]
+RewriteRule ^(.*)$ https://example.com/$1 [L,R=301]
+
+# Postavi početnu stranicu na index.html
+DirectoryIndex index.html
+
+# Onemogući pregled direktorija
+Options -Indexes
